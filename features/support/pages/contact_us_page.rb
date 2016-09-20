@@ -1,11 +1,12 @@
 class ContactUsPage < GenericPage
   def visit
     @browser.goto "http://www.acumenci.com/contact-us/"
+    check_trait
   end
 
   # Getters
   def check_postcode
-    raise unless @browser.div(class: "nine column").p.text.include?("TW9 1HY")
+    Watir::Wait.until(5) {@browser.div(class: "nine column").p.text.include?("TW9 1HY")
   end
 
   def check_trait
